@@ -1,32 +1,32 @@
-from __init__ import Duedil
+from .__init__ import Duedil
 
 _company_status_lookup = {
-    "L": u"Live",
-    "D": u"Dissolved",
-    "R": u"Removed",
-    "!": u"Deleted",
-    "X": u"Converted / Closed"
+    "L": "Live",
+    "D": "Dissolved",
+    "R": "Removed",
+    "!": "Deleted",
+    "X": "Converted / Closed"
 }
 
 _company_type_lookup = {
-    "0": u"Other",
-    "1": u"Private unlimited with share capital",
-    "2": u"Private limited with share capital",
-    "3": u"Public limited with share capital",
-    "4": u"Old public limited company",
-    "5": u"Private limited by guarantee without share capital, exempt from using 'Limited'",
-    "6": u"Limited Partnership",
-    "7": u"Private limited by guarantee without share capital",
-    "8": u"Company converted / closed",
-    "9": u"Unlimited / No share capital",
-    "A": u"Limited"
+    "0": "Other",
+    "1": "Private unlimited with share capital",
+    "2": "Private limited with share capital",
+    "3": "Public limited with share capital",
+    "4": "Old public limited company",
+    "5": "Private limited by guarantee without share capital, exempt from using 'Limited'",
+    "6": "Limited Partnership",
+    "7": "Private limited by guarantee without share capital",
+    "8": "Company converted / closed",
+    "9": "Unlimited / No share capital",
+    "A": "Limited"
 }
 
 _liquidation_status_lookup = {
-    "L": u"In liquidation",
-    "R": u"In receivership",
-    "S": u"Strike off listed",
-    "O": u"Struck off"
+    "L": "In liquidation",
+    "R": "In receivership",
+    "S": "Strike off listed",
+    "O": "Struck off"
 }
 
 class Companies(Duedil):
@@ -52,7 +52,7 @@ class Company(Duedil):
         self._id = id
         self._url += "company/%s.json?" % (self._id)
         get = self.__get__("fields=get_all")
-        for key in get.iterkeys():
+        for key in get.keys():
             if key == "status":
                 self.__setattr__(key, _company_status_lookup[get[key]])
             elif key == "companyType":

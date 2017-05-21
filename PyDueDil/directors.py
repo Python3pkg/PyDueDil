@@ -1,4 +1,4 @@
-from __init__ import Duedil
+from .__init__ import Duedil
 
 class Directors(Duedil):
     """
@@ -20,5 +20,5 @@ class Director(Duedil):
         Duedil.__init__(self, key)
         self._url += "director/%s.json?" % (id)
         get = self.__get__("field=get_all")
-        for key in get.iterkeys():
+        for key in get.keys():
             self.__setattr__(key, get[key])

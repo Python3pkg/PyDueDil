@@ -1,4 +1,4 @@
-import os, json, urllib2
+import os, json, urllib.request, urllib.error, urllib.parse
 
 class Duedil(object):
     """
@@ -10,10 +10,10 @@ class Duedil(object):
 
     def __get__(self, params=""):
         assert type(params) == str
-        return json.loads(urllib2.urlopen(self._url + params + "&api_key=" + self._key).read())['response']
+        return json.loads(urllib.request.urlopen(self._url + params + "&api_key=" + self._key).read())['response']
 
     def __quote__(self, s):
-        return urllib2.quote(s)
+        return urllib.parse.quote(s)
 
     def __key__(self, key):
         if key:
